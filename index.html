@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Valentine ❤️</title>
+    <!-- Tailwind CSS and Animate.css for awesome animations -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        /* Beautiful gradient background */
+        .gradient-background {
+            background: rgb(255, 208, 229);
+            background: linear-gradient(180deg, rgba(255, 208, 229, 1) 0%, rgba(255, 232, 242, 1) 36%, rgba(255, 255, 255, 1) 100%);
+        }
+
+        /* Modal styles for all popup windows */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        /* Pretty modal content with gradient */
+        .modal-content {
+            background: linear-gradient(135deg, #FFE8F2, #FFD0E5);
+            padding: 2rem;
+            border-radius: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid #FFB6C1;
+        }
+
+        /* Journey slides animation */
+        .journey-slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .journey-slide.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Floating animation for emojis and elements */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+
+        /* Heart burst animation */
+        .heart-burst {
+            animation: heartBurst 1.5s ease-out forwards;
+        }
+
+        @keyframes heartBurst {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.4); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="gradient-background">
+    <!-- Splash Screen Modal -->
+    <div id="splash-screen" class="modal">
+        <div class="modal-content w-11/12 md:w-2/3 lg:w-1/2 animate__animated animate__zoomIn">
+            <div class="p-8">
+                <h1 class="text-4xl font-bold text-pink-600 mb-6 animate__animated animate__fadeIn">Hi Saron! 💖</h1>
+                <div class="floating text-7xl mb-6">🌹</div>
+                <h2 class="text-2xl text-pink-500 mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                    This is Theodore,<br>I have something special to ask you...
+                </h2>
+                <button id="continue-btn" class="mt-6 px-8 py-3 bg-pink-500 text-white rounded-full hover:bg-pink-600 transition-all animate__animated animate__fadeIn animate__delay-2s">
+                    Continue ✨
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Music Modal -->
+    <div id="music-modal" class="modal">
+        <div class="modal-content w-11/12 md:w-2/3 lg:w-1/2">
+            <h2 class="text-2xl font-bold text-pink-600 mb-4">Would you like some romantic music? 🎵</h2>
+            <div class="flex justify-center gap-4">
+                <button id="enableMusic" class="px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-all">
+                    Yes, please! 🎶
+                </button>
+                <button id="disableMusic" class="px-6 py-2 bg-gray-500 text-white rounded-lg hover:bg-gray-600 transition-all">
+                    No, thanks
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Journey Slides (After Yes) -->
+    <div id="journey-container" class="modal">
+        <div class="modal-content w-11/12 md:w-2/3 lg:w-1/2">
+            <!-- Slide 1 -->
+            <div class="journey-slide" data-slide="1">
+                <h2 class="text-3xl font-bold text-pink-600 mb-4">My Heart Skipped a Beat! 💓</h2>
+                <img src="./images/Saron.jpg" alt="Happy Couple" class="w-64 h-64 mx-auto mb-4 rounded-lg">
+                <p class="text-xl text-pink-500 mb-6">You just made me the happiest person! Let me show you something...</p>
+                <button class="next-slide px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Next ➡️</button>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="journey-slide" data-slide="2">
+                <h2 class="text-3xl font-bold text-pink-600 mb-4">Our Future Together 🌟</h2>
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                    <div class="text-center">
+                        <div class="text-4xl mb-2">🎭</div>
+                        <p>Movie Dates</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-2">🍝</div>
+                        <p>Romantic Dinners</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-2">✈️</div>
+                        <p>Adventures</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-2">🌅</div>
+                        <p>Sunsets Together</p>
+                    </div>
+                </div>
+                <button class="next-slide px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Next ➡️</button>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="journey-slide" data-slide="3">
+                <h2 class="text-3xl font-bold text-pink-600 mb-4">A Special Message 💌</h2>
+                <div class="mb-6">
+                    <p class="text-xl text-pink-500 animate__animated animate__fadeIn">
+                        Every moment with you is a gift,<br>
+                        Every smile you share lights up my world,<br>
+                        And now that you've said yes...<br>
+                    </p>
+                </div>
+                <button class="next-slide px-6 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600">Continue ❤️</button>
+            </div>
+
+            <!-- Final Slide -->
+            <div class="journey-slide" data-slide="4">
+                <h2 class="text-4xl font-bold text-pink-600 mb-6 animate__animated animate__heartBeat">
+                    I Love You! ❤️
+                </h2>
+                <div class="floating text-7xl mb-6">💝</div>
+                <p class="text-xl text-pink-500 mb-6">
+                    Thank you for making my day perfect!
+                </p>
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                    <div class="text-4xl">🌹</div>
+                    <div class="text-4xl">💖</div>
+                    <div class="text-4xl">🌹</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex items-center justify-center h-screen" id="main-content">
+        <div class="flex flex-col items-center p-4">
+            <img id="imageDisplay" src="./images/image1.gif" alt="Cute kitten with flowers" class="rounded-md h-[300px]" style="object-fit: cover;" />
+            <h2 id="valentineQuestion" class="text-4xl font-bold italic text-[#bd1e59] my-4">Will you be my Valentine?</h2>
+            <div class="flex gap-4 pt-[20px] items-center" id="responseButtons">
+                <button id="yesButton"
+                    class="animate__animated animate__pulse animate__infinite inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition hover:bg-green-400 min-h-12 px-6 bg-green-500 text-white">
+                    Yes
+                </button>
+                <button id="noButton"
+                    class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-[20px] font-medium transition hover:bg-red-700 h-12 px-6 bg-red-600 text-white">
+                    No
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="bgMusic" preload="auto" loop>
+        <source src="music/Ariana.mp3" type="audio/mp3">
+    </audio>
+
+    <script type="module">
+        import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+        
+        // Elements
+        const splashScreen = document.getElementById('splash-screen');
+        const musicModal = document.getElementById('music-modal');
+        const mainContent = document.getElementById('main-content');
+        const journeyContainer = document.getElementById('journey-container');
+        const bgMusic = document.getElementById('bgMusic');
+        const yesButton = document.getElementById('yesButton');
+        const noButton = document.getElementById('noButton');
+        const imageDisplay = document.getElementById('imageDisplay');
+        const valentineQuestion = document.getElementById('valentineQuestion');
+        const responseButtons = document.getElementById('responseButtons');
+
+        // Show splash screen on load
+        window.addEventListener('DOMContentLoaded', () => {
+            splashScreen.style.display = 'block';
+        });
+
+        // Continue button click
+        document.getElementById('continue-btn').addEventListener('click', () => {
+            splashScreen.style.display = 'none';
+            musicModal.style.display = 'block';
+        });
+
+        // Music controls
+        document.getElementById('enableMusic').addEventListener('click', () => {
+            bgMusic.volume = 0.5;
+            bgMusic.play();
+            musicModal.style.display = 'none';
+            mainContent.classList.add('animate__animated', 'animate__fadeIn');
+        });
+
+        document.getElementById('disableMusic').addEventListener('click', () => {
+            musicModal.style.display = 'none';
+            mainContent.classList.add('animate__animated', 'animate__fadeIn');
+        });
+
+        // Volume control button
+        const volumeControl = document.createElement('button');
+        volumeControl.innerHTML = '🔊';
+        volumeControl.className = 'fixed bottom-4 right-4 bg-pink-500 text-white rounded-full w-12 h-12 flex items-center justify-center hover:bg-pink-600 transition-all z-50';
+        volumeControl.onclick = () => {
+            if (bgMusic.volume > 0) {
+                bgMusic.volume = 0;
+                volumeControl.innerHTML = '🔈';
+            } else {
+                bgMusic.volume = 0.5;
+                volumeControl.innerHTML = '🔊';
+            }
+        };
+        document.body.appendChild(volumeControl);
+
+        // Journey slides handling
+        let currentSlide = 1;
+        const totalSlides = 4;
+
+        function showSlide(slideNumber) {
+            document.querySelectorAll('.journey-slide').forEach(slide => {
+                slide.classList.remove('active');
+            });
+            const slideToShow = document.querySelector(`.journey-slide[data-slide="${slideNumber}"]`);
+            slideToShow.classList.add('active', 'animate__animated', 'animate__fadeIn');
+        }
+
+        document.querySelectorAll('.next-slide').forEach(button => {
+            button.addEventListener('click', () => {
+                currentSlide++;
+                if (currentSlide <= totalSlides) {
+                    showSlide(currentSlide);
+                    if (currentSlide === totalSlides) {
+                        // Grand finale effects
+                        const duration = 3 * 1000;
+                        const animationEnd = Date.now() + duration;
+                        const defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+                        function randomInRange(min, max) {
+                            return Math.random() * (max - min) + min;
+                        }
+
+                        const interval = setInterval(function() {
+                            const timeLeft = animationEnd - Date.now();
+
+                            if (timeLeft <= 0) {
+                                return clearInterval(interval);
+                            }
+
+                            const particleCount = 50 * (timeLeft / duration);
+                            confetti(Object.assign({}, defaults, { 
+                                particleCount, 
+                                origin: { x: randomInRange(0.1, 0.9), y: Math.random() - 0.2 } 
+                            }));
+                        }, 250);
+                    }
+                }
+            });
+        });
+
+        // Button interaction variables
+        let noClickCount = 0;
+        let buttonHeight = 48;
+        let buttonWidth = 80;
+        let fontSize = 20;
+        const imagePaths = [
+            "./images/image1.gif",
+            "./images/image2.gif",
+            "./images/image3.gif",
+            "./images/image4.gif",
+            "./images/image5.gif",
+            "./images/image6.gif",
+            "./images/image2.gif",
+            "./images/image3.gif",
+            "./images/image4.gif",
+            "./images/image5.gif",
+            "./images/image6.gif",
+            "./images/image4.gif",
+            "./images/image3.gif",
+        ];
+
+        // Enhanced No button interaction
+        noButton.addEventListener('click', function() {
+            if (noClickCount < 9) {
+                noClickCount++;
+                imageDisplay.src = imagePaths[noClickCount];
+                buttonHeight += 35;
+                buttonWidth += 35;
+                fontSize += 25;
+                yesButton.style.height = `${buttonHeight}px`;
+                yesButton.style.width = `${buttonWidth}px`;
+                yesButton.style.fontSize = `${fontSize}px`;
+                
+                const messages = [
+                    "No",
+                    "Are you sure? 🥺",
+                    "Please babe 💕",
+                    "Don't do this to me 😢", 
+                    "You're breaking my heart 💔",
+                    "I'm gonna cry... 😭",      
+                    "saronnn pleasee🥺",
+                    "I'll be a good boyyy🤕",
+                    "Theodore aint make it, babe😭",
+                    "pleaseee pookie😣"      
+                ];
+                
+                noButton.textContent = messages[noClickCount];
+                noButton.classList.add('animate__animated', 'animate__shakeX');
+                setTimeout(() => noButton.classList.remove('animate__shakeX'), 1000);
+            }
+        });
+
+        // Enhanced Yes button interaction
+        yesButton.addEventListener('click', () => {
+            mainContent.style.display = 'none';
+            journeyContainer.style.display = 'block';
+            showSlide(1);
+            
+            // Special confetti effect
+            confetti({
+                particleCount: 50,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+        });
+    </script>
+</body>
+</html>
